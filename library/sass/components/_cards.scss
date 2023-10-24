@@ -1,0 +1,173 @@
+.library-cards__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 20px 40px;
+}
+
+@media screen and (max-width : 1024px) {
+    .library-cards__container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .library-cards__heading {
+        padding-top: 0;
+    }
+}
+
+.library-cards__left {
+    width: 600px;
+    height: 453px;
+}
+
+.library-cards__left__heading {
+    margin-bottom: 30px;
+    color: $color-text;
+    text-align: center;
+    @include font(3rem, 0.06rem, 400, normal);
+    text-transform: inherit;
+}
+
+@media screen and (max-width : 640px) {
+    .library-cards__left {
+        max-width: 600px;
+        width: 100%;
+    }
+}
+
+.library-cards__form {
+    box-sizing: border-box;
+    width: 600px;
+    height: 386px;
+    border: 3px solid $color-primary;
+    background: $color-light;
+    padding: 18px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width : 640px) {
+    .library-cards__form {
+        max-width: 600px;
+        width: 100%;
+    }
+}
+
+.library-cards__box-form {
+    box-sizing: border-box;
+    width: 560px;
+    height: 272px;
+    padding: 20px;
+    background: $color-primary;
+}
+
+.library-cards__name-form {
+    margin-bottom: 20px;
+    color: $color-text;
+    @extend %font-add;
+    @include font(3rem, 0.06rem, 400, 5rem, normal);
+}
+
+@media screen and (max-width : 640px) {
+    .library-cards__name-form {
+        font-size: 25px;
+    }
+
+    .library-cards__box-form {
+        max-width: 560px;
+        width: 100%;
+    }
+}
+
+.library-cards__input {
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    width: 520px;
+    height: 66px;
+
+    border-radius: 10px;
+    background: $color-light;
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+
+    &::placeholder {
+        color: $color-placeholder;
+        @extend %font-add;
+        @include font(3rem, 0.06rem, 400, 5rem, normal);
+    }
+}
+
+@media screen and (max-width : 640px) {
+    .library-cards__input {
+        max-width: 520px;
+        width: 100%;
+    }
+}
+
+.library-cards__right {
+    position: relative;
+    width: 33%;
+    height: 253px;
+}
+
+.library-cards__right__heading {
+    margin-bottom: 30px;
+
+    text-align: right;
+    @extend %font-add;
+    @include font(3rem, 0.06rem, 400, 3.3rem, normal);
+    text-transform: inherit;
+}
+
+@media screen and (max-width : 1024px) {
+    .library-cards__right {
+        width: 100%;
+        height: 223px;
+    }
+
+    .library-cards__right__heading {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width : 640px) {
+    .library-cards__right {
+        width: 100%;
+        height: 280px;
+    }
+}
+
+.library-cards__right__text {
+    margin-bottom: 35px;
+
+    text-align: right;
+    line-height: 40px;
+    letter-spacing: 0.4px;
+}
+
+.library-cards__button__container {
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+}
+
+@media screen and (max-width : 1024px) {
+
+    .library-cards__right__text {
+        width: 78%;
+        margin: 0 auto 35px;
+        text-align: center;
+    }
+
+    .library-cards__right__text {
+        margin-bottom: 40px;
+    }
+
+    .library-cards__button__container {
+        justify-content: center;
+    }
+}

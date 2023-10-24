@@ -4,35 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Brooklyn Public Library</title>
-    <link rel="stylesheet" href="normalize.css" />
-    <link rel="stylesheet" href="style.css" />
     <link
       rel="shortcut icon"
       href="./img/favicon_io/android-chrome-192x192.png"
       type="image/x-icon"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/library/sass/style.css" />
   </head>
   <body>
     <div class="container">
       <header class="header">
         <h1 class="header__heading">Brooklyn Public Library</h1>
         <div class="header__right">
-          <nav class="header-nav">
-            <ul class="header-nav-menu">
-              <li><a class="header-nav-menu__item" href="#about">About</a></li>
+          <nav class="navigation">
+            <ul class="navigation-menu">
+              <li><a class="navigation-menu__item" href="#about">About</a></li>
               <li>
-                <a class="header-nav-menu__item" href="#favorites">Favorites</a>
+                <a class="navigation-menu__item" href="#favorites">Favorites</a>
               </li>
               <li>
-                <a class="header-nav-menu__item" href="#coffee-shop"
+                <a class="navigation-menu__item" href="#coffee-shop"
                   >Coffee shop</a
                 >
               </li>
               <li>
-                <a class="header-nav-menu__item" href="#contacts">Contacts</a>
+                <a class="navigation-menu__item" href="#contacts">Contacts</a>
               </li>
               <li>
-                <a class="header-nav-menu__item" href="#library-cards"
+                <a class="navigation-menu__item" href="#library-cards"
                   >Library Card</a
                 >
               </li>
@@ -90,11 +93,31 @@
             </button>
             <div class="about__slider">
               <div class="about__images">
-                <img class="about__image" src="./img/about/image1.png" alt="img" />
-                <img class="about__image" src="./img/about/image2.png" alt="img" />
-                <img class="about__image" src="./img/about/image3.png" alt="img" />
-                <img class="about__image" src="./img/about/image4.png" alt="img" />
-                <img class="about__image" src="./img/about/image5.png" alt="img" />
+                <img
+                  class="about__image"
+                  src="./img/about/image1.png"
+                  alt="img"
+                />
+                <img
+                  class="about__image"
+                  src="./img/about/image2.png"
+                  alt="img"
+                />
+                <img
+                  class="about__image"
+                  src="./img/about/image3.png"
+                  alt="img"
+                />
+                <img
+                  class="about__image"
+                  src="./img/about/image4.png"
+                  alt="img"
+                />
+                <img
+                  class="about__image"
+                  src="./img/about/image5.png"
+                  alt="img"
+                />
               </div>
             </div>
             <button class="about__carret about__carret_right">
@@ -536,7 +559,7 @@
           </div>
         </section>
         <section id="coffee-shop">
-          <h2 class="coffee-shop__heading heading">Coffee shop</h2>
+          <h2 class="coffee-shop__heading heading">Coffee Shop</h2>
           <p class="coffee-shop__description">
             In our library, we have of cozy coffee shop, welcoming in customers
             with frothy cappuccinos and friendly conversation. You can get a
@@ -703,11 +726,11 @@
               </p>
               <div class="library-cards__button__container">
                 <button
-                  class="button library-cards__button library-cards__sing-up"
+                  class="button library-cards__button library-cards__sing-up move-to-register"
                 >
                   Sign Up
                 </button>
-                <button class="button library-cards__button">Log in</button>
+                <button class="button library-cards__button move-to-login">Log in</button>
               </div>
             </div>
           </div>
@@ -763,7 +786,7 @@
         <form class="pop-up-form" action="">
           <label>
             <span>E-mail or readers card </span>
-            <input class="input-field" type="text">
+            <input class="input-field" type="text" />
           </label>
           <label>
             <span>Password</span>
@@ -784,13 +807,20 @@
         <form class="pop-up-form" action="">
           <label>
             <span>First name</span>
-          <input class="input-field" type="text" name="First-name" /></label>
-          <label><span>Last name</span>
-          <input class="input-field" class="" type="text" name="Last-name"  /></label>
-          <label><span>E-mail</span>
-          <input class="input-field" class="" type="email" /></label>
-          <label><span>Password</span>
-          <input class="input-field" class="" type="text" /></label>
+            <input class="input-field" type="text" name="First-name"
+          /></label>
+          <label
+            ><span>Last name</span>
+            <input class="input-field" class="" type="text" name="Last-name"
+          /></label>
+          <label
+            ><span>E-mail</span>
+            <input class="input-field" class="" type="email"
+          /></label>
+          <label
+            ><span>Password</span>
+            <input class="input-field" class="" type="text"
+          /></label>
           <button class="button pop-up__button" type="submit">Sign Up</button>
           <div class="form-checked">
             <span>Already have an account?</span>

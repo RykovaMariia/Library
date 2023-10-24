@@ -1,0 +1,104 @@
+.header {
+    position: relative; 
+    background-color:$color-background;
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.header__heading {
+    position: relative;
+    width: 294px;
+}
+
+.header__icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    border: 0;
+    padding: 0;
+    background-color: $color-transparent;
+    cursor: pointer;
+
+    &_noAuthProfile path {
+        fill: $color-light;
+        transition: fill 0.5s;
+    }
+
+    &:hover .header__icon_noAuthProfile path {
+        fill: $color-primary;
+    }
+}
+
+@media screen and (max-width : $content-media-burger) {
+    .header__icons {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+
+        .header__icon {
+            margin-right: 40px;
+        }
+    }
+}
+
+.header__burger {
+    display: none;
+}
+
+@media screen and (max-width : $content-media-burger) {
+    .header__burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 7px;
+        width: 45px;
+        height: 32px;
+        padding: 0;
+
+        background-color: $color-transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.7s ease;
+        z-index: 2;
+    }
+
+    .header__burger__line {
+        width: 45px;
+        height: 2px;
+        background-color: $color-light;
+        transition: all 0.7s ease;
+    }
+
+    .header__burger:hover .header__burger__line {
+        background-color: $color-primary;
+    }
+
+    /* x */
+
+    .header.open .header__burger__line:nth-child(1) {
+
+        transform-origin: left;
+        transform: translateY(-6px) rotate(45deg);
+    }
+
+    .header.open .header__burger__line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header.open .header__burger__line:nth-child(3) {
+        transform-origin: left;
+        transform: translateX(-2px) translateY(8px) rotate(-45deg);
+    } 
+}

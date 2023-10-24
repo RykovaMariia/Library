@@ -1,0 +1,42 @@
+html {
+    scroll-behavior: smooth;
+    font-size: 10px;
+}
+
+body {
+    font-size: 2rem;
+    font-family: 'Inter', Verdana, sans-serif;
+}
+
+body.lock {
+    overflow: hidden;
+}
+
+h1 {
+    color: $color-light;
+    @extend %font-add;
+    @include font(3rem, 0.06rem, 400, 5rem);
+}
+
+h2 {
+    padding: 20px;
+    color: $color-text;
+    text-align: center;
+    @extend %font-add;
+    @include font(4rem, 0.2rem, 400, 4rem);
+
+    &::after {
+        content: "";
+        display: block;
+        width: 50px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $color-background;
+        margin: auto;
+    }
+}
+
+h3 {
+    color: $color-text;
+    @include font(1.5rem, 0.2rem, 700, 4rem);
+    text-transform: uppercase;
+}
