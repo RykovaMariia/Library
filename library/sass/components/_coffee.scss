@@ -1,0 +1,138 @@
+.coffee-shop__description {
+    width: 97.2%;
+    margin: 20px auto;
+    color: $color-text;
+    text-align: center;
+    @include font(2rem, 0.2rem, 400, 4rem, normal);
+}
+
+@media screen and (max-width : 1024px) {
+    .coffee-shop__description {
+        width: 95%;
+    }
+}
+
+.coffee-shop__menu {
+    display: flex;
+    margin: 0 20px 40px ;
+    justify-content: space-between;
+}
+
+.coffee-shop__menu-list {
+    margin-top: 20px;
+    width: 438px;
+    height: 520px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 39px;
+}
+
+.coffee-shop__menu-heading {
+    margin: 0;
+    color: $color-primary;
+    @extend %font-add;
+    @include font(4rem, 0.2rem, 400, 4rem, normal);
+    text-transform: capitalize;
+}
+
+.coffee-shop__menu-row {
+    display: flex;
+}
+
+.coffee-shop__menu-name {
+    display: block;
+    width: 200px;
+    margin-right: 218px;
+
+    color: $color-text;
+    @include font(2rem, 0.2rem, 400, 4rem, normal);
+    text-transform: capitalize;
+
+    &::after {
+        content: ' ';
+        background: $color-primary;
+        display: block;
+        height: 1px;
+        position: relative;
+        width: 100px;
+        left: 257px;
+        top: -50%;
+        margin-right: -100px;
+    }
+}
+
+@media screen and (max-width : 640px) {
+    .coffee-shop__menu-list {
+        max-width: 438px;
+        width: 100%;
+    }
+
+    .coffee-shop__menu-name {
+        font-size: 15px;
+        margin-right: 45%;
+
+        &::after {
+            max-width: 100px;
+            width: 22%;
+            left: 128%;
+        }
+    }
+}
+
+.coffee-shop__menu-price {
+    display: block;
+    width: 21px;
+    color: $color-text;
+    @extend %font-add;
+    @include font(2rem, 0.2rem, 400, 4rem, normal);
+    text-transform: capitalize;
+    text-align: right;
+}
+
+.coffee-shop__menu-list_right {
+    width: 482px;
+}
+
+.coffee-shop__menu-heading_right {
+    text-align: right;
+}
+
+.coffee-shop__menu-name_right {
+    width: 234px;
+    margin-right: 218px;
+    text-align: right;
+
+    &::after {
+        left: 292px;
+    }
+}
+
+@media screen and (max-width : 1024px) {
+    .coffee-shop__menu {
+        flex-direction: column;
+    }
+
+    .coffee-shop__menu-list_right {
+        margin-top: 40px;
+        align-self: flex-end;
+    }
+}
+
+@media screen and (max-width : 640px) {
+    .coffee-shop__menu-list_right {
+        max-width: 438px;
+        width: 100%;
+    }
+
+    .coffee-shop__menu-name_right {
+        font-size: 15px;
+        margin-right: 45%;
+
+        &::after {
+            max-width: 100px;
+            width: 22%;
+            left: 128%;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+.button {
+    background-color: $color-light;
+    border-radius: 2px;
+    border: 1px solid $color-background;
+
+    color: $color-background;
+    text-align: center;
+    @include font(1rem, 0.1rem, 700, normal);
+    cursor: pointer;
+    @extend %transition;
+
+    &:hover {
+        border-radius: 2px;
+        border: 1px solid $color-primary;
+        background: $color-primary;
+    
+    }
+}
+
+.book__buy-button {
+    position: absolute;
+    bottom: 15px;
+    width: 75px;
+    padding: 9px 27px;
+    @extend %transition;
+
+    &_own {
+        border: 1px solid $color-primary;
+        color: $color-primary;
+        cursor: auto;
+        &:hover {
+            background: $color-light;
+        }
+    }
+}
+
+.library-cards__submit-button {
+    display: block;
+    width: 242px;
+    height: 44px;
+    margin: 19px auto;
+
+    @include font(2rem, 0.1rem, 700, normal);
+}
+
+.library-cards__button {
+    width: 75px;
+    height: 30px;
+}
+

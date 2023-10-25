@@ -1,0 +1,194 @@
+.favorites__text {
+    width: 234px;
+    margin: 20px;
+    color: $color-text;
+    text-align: center;
+    @include font(2rem, normal, 700, normal)
+}
+
+.favorites__seasons {
+    height: 44px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 60px;
+
+    position: sticky;
+    top: 0px;
+    background-color: $color-light;
+    z-index: 2;
+}
+
+.favorites__seasons__label {
+    position: relative;
+    padding: 5px;
+    width: 126px;
+
+    cursor: pointer;
+
+    /* text */
+    color: $color-text;
+    transition: font-weight 0.4s ease;
+
+    &  input {
+        position: absolute;
+        height: 0px;
+        width: 0px;
+        opacity: 0;
+    }
+}
+
+.favorites__seasons__custom {
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+
+    height: 17px;
+    width: 17px;
+    border: 2px solid $color-text;
+    border-radius: 50%;
+    margin-right: 15px;
+    vertical-align: auto;
+
+    &::before {
+        box-sizing: border-box;
+        display: inline-block;
+    
+        content: "";
+        background: $color-text;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+    
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0);
+    
+        transition: 0.3s ease-in;
+    }
+}
+
+.favorites__seasons__label input:checked+.favorites__seasons__custom::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.favorites__seasons__label:has(:checked) {
+    font-weight: 700;
+    transition: font-weight 0.4s ease;
+}
+
+.books-conteiner {
+    padding: 20px 0 40px;
+    height: 1150px;
+    position: relative;
+}
+
+@media screen and (max-width : 1400px) {
+    .books-conteiner {
+        height: 2340px;
+    }
+}
+
+.books {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    gap: 40px 15%;
+    flex-wrap: wrap;
+    visibility: visible;
+    opacity: 100%;
+    transition: opacity 2s ease;
+
+    &_disabled {
+        opacity: 0%;
+        visibility: hidden;
+        transition: opacity 2s ease;
+        z-index: -1;
+    }
+}
+
+.book {
+    box-sizing: border-box;
+    width: 590px;
+    height: 555px;
+    background: $color-light;
+}
+
+@media screen and (max-width : 640px) {
+
+    .book {
+        max-width: 590px;
+        width: 80%;
+    }
+}
+
+.book__border {
+    box-sizing: border-box;
+    position: relative;
+    width: 550px;
+    height: 555px;
+    border: 1px solid #000;
+    padding: 15px 20px;
+}
+
+@media screen and (max-width : 640px) {
+    .book__border {
+        max-width: 550px;
+        width: 100%;
+    }
+}
+
+.book__cover {
+    position: absolute;
+    right: -40px;
+    bottom: -1px;
+}
+
+@media screen and (max-width : 640px) {
+    .book__cover {
+        max-width: 200px;
+        width: 33%;
+    }
+}
+
+.book__staff-picks {
+    color: $color-text;
+    @extend %font-add;
+    @include font(2rem, 0.2rem, 400, 4rem, normal);
+    text-transform: capitalize;
+}
+
+.book__staff-picks::after {
+    content: "";
+    display: block;
+    width: 60px;
+    border-bottom: 1px solid $color-primary;
+}
+
+.book__name {
+    margin: 20px 0;
+}
+
+.book__author {
+    color: $color-text;
+    @include font(1.5rem, 0.2rem, 700, 4rem, normal);
+    text-transform: capitalize;
+}
+
+.book__description {
+    width: 357px;
+    color: $color-text;
+    @include font(1.5rem, 0.2rem, 400, 4rem, normal);
+    text-transform: capitalize;
+}
+
+@media screen and (max-width : 640px) {
+    .book__description {
+        max-width: 357px;
+        width: 80%;
+        @include font(1.2rem, normal, 400, 2.2rem, normal);
+
+    }
+}

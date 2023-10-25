@@ -1,0 +1,64 @@
+.noAuthProfile {
+
+    position: absolute;
+    top: 80px;
+    right: 20px;
+
+    width: 80px;
+    height: 115px;
+    background: $color-light;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1.5s ease;
+    z-index: 2;
+
+    &_open {
+        visibility: visible;
+        opacity: 100%;
+    }
+}
+
+@media screen and (max-width : $content-media-burger) {
+    .noAuthProfile {
+        right: 105px;
+    }
+}
+
+.noAuthProfile__name {
+    width: 48px;
+    margin: 5px auto 0px auto;
+    color: $color-text;
+
+    @include font(1.5rem, 700, 2rem, normal);
+
+    &::after {
+        content: '';
+        display: block;
+        margin: auto;
+        padding-bottom: 5px;
+        width: 40px;
+        height: 1px;
+        border-bottom: 1px solid $color-primary;
+    }
+}
+
+.noAuthProfile__items {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.noAuthProfile__item {
+    color: $color-text;
+
+    text-align: center;
+    @include font(1.5rem, 400, 2rem, normal);
+    cursor: pointer;
+    @extend %transition;
+
+    &:hover {
+        color: $color-primary;
+    }
+}
