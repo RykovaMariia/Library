@@ -186,7 +186,7 @@ section, main, footer, header, article {
   font-family: "Forum", Verdana, serif;
 }
 
-.noAuthProfile__item, .navigation-menu__item, .book__buy-button, .button {
+.profile__item, .navigation-menu__item, .book__buy-button, .button {
   transition: all 0.7s ease;
 }
 
@@ -325,16 +325,37 @@ h3 {
   height: 28px;
   display: flex;
   border: 0;
+  border-radius: 50%;
   padding: 0;
   background-color: rgba(255, 255, 255, 0);
+  background-image: url(../img/header/icon_profile.svg);
   cursor: pointer;
+  transition: all 0.5s;
 }
-.header__icon_noAuthProfile path {
-  fill: #FFFFFF;
-  transition: fill 0.5s;
+.header__icon:hover {
+  background-image: url(../img/header/icon_profile\ copy.svg);
 }
-.header__icon:hover .header__icon_noAuthProfile path {
-  fill: #BB945F;
+.header__icon_user {
+  background-image: none;
+  background-color: #FFFFFF;
+}
+.header__icon_user:hover {
+  background-image: none;
+  background-color: #FFFFFF;
+  opacity: 50%;
+}
+
+.header__icon__userName {
+  width: 28px;
+  height: 20px;
+  align-content: center;
+  margin: auto;
+  color: #BB945F;
+  font-size: 1.5rem;
+  letter-spacing: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  font-style: normal;
 }
 
 @media screen and (max-width: 1065px) {
@@ -515,7 +536,7 @@ address {
     z-index: 1;
   }
 }
-.noAuthProfile {
+.profile {
   position: absolute;
   top: 80px;
   right: 20px;
@@ -527,17 +548,17 @@ address {
   transition: all 1.5s ease;
   z-index: 2;
 }
-.noAuthProfile_open {
+.profile_open {
   visibility: visible;
   opacity: 100%;
 }
 
 @media screen and (max-width: 1065px) {
-  .noAuthProfile {
+  .profile {
     right: 105px;
   }
 }
-.noAuthProfile__name {
+.profile__name {
   width: 48px;
   margin: 5px auto 0px auto;
   color: #000000;
@@ -547,7 +568,7 @@ address {
   line-height: normal;
   font-style: normal;
 }
-.noAuthProfile__name::after {
+.profile__name::after {
   content: "";
   display: block;
   margin: auto;
@@ -557,7 +578,14 @@ address {
   border-bottom: 1px solid #BB945F;
 }
 
-.noAuthProfile__items {
+.profile_auth__name {
+  margin-top: 8px;
+  width: 70px;
+  align-content: center;
+  font-size: 1.3rem;
+}
+
+.profile__items {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
@@ -565,7 +593,7 @@ address {
   gap: 10px;
 }
 
-.noAuthProfile__item {
+.profile__item {
   color: #000000;
   text-align: center;
   font-size: 1.5rem;
@@ -575,7 +603,7 @@ address {
   font-style: normal;
   cursor: pointer;
 }
-.noAuthProfile__item:hover {
+.profile__item:hover {
   color: #BB945F;
 }
 
