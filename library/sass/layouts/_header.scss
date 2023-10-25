@@ -25,18 +25,37 @@
     height: 28px;
     display: flex;
     border: 0;
+    border-radius: 50%;
     padding: 0;
     background-color: $color-transparent;
+    background-image: url(../img/header/icon_profile.svg);
     cursor: pointer;
+    transition: all 0.5s;
 
-    &_noAuthProfile path {
-        fill: $color-light;
-        transition: fill 0.5s;
+    &:hover {
+        background-image: url(../img/header/icon_profile\ copy.svg); 
     }
 
-    &:hover .header__icon_noAuthProfile path {
-        fill: $color-primary;
+    &_user{
+        background-image: none;
+        background-color: $color-light;
+        
     }
+
+    &_user:hover{
+        background-image: none;
+        background-color: $color-light;
+        opacity: 50%;
+    }
+}
+
+.header__icon__userName {
+    width: 28px;
+    height: 20px;
+    align-content: center;
+    margin: auto;
+    color: $color-primary;
+    @include font(1.5rem, normal, 400, 2rem, normal);
 }
 
 @media screen and (max-width : $content-media-burger) {

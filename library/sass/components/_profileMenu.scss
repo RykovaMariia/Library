@@ -1,4 +1,4 @@
-.noAuthProfile {
+.profile {
 
     position: absolute;
     top: 80px;
@@ -19,12 +19,12 @@
 }
 
 @media screen and (max-width : $content-media-burger) {
-    .noAuthProfile {
+    .profile {
         right: 105px;
     }
 }
 
-.noAuthProfile__name {
+.profile__name {
     width: 48px;
     margin: 5px auto 0px auto;
     color: $color-text;
@@ -42,7 +42,14 @@
     }
 }
 
-.noAuthProfile__items {
+.profile_auth__name {
+    margin-top: 8px;
+    width: 70px;
+    align-content: center;
+    font-size: 1.3rem;
+}
+
+.profile__items {
     margin-top: 15px;
     display: flex;
     flex-direction: column;
@@ -50,7 +57,7 @@
     gap: 10px;
 }
 
-.noAuthProfile__item {
+.profile__item {
     color: $color-text;
 
     text-align: center;
@@ -62,3 +69,4 @@
         color: $color-primary;
     }
 }
+
