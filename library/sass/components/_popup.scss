@@ -44,6 +44,15 @@
     height: 382px;
 }
 
+.my-profile {
+    width: 600px;
+    height: 400px;
+    padding: 0;
+    align-items: start;
+    display: flex;
+    flex-direction: row;
+}
+
 .pop-up__heading {
     display: block;
     color: $color-text;
@@ -62,10 +71,15 @@
     right: 15px;
     cursor: pointer;
     opacity: 1;
-}
 
-.pop-up__close:hover {
-    background-image: url(/library/img/pop-up/close_btn\ copy.svg);
+    &_my-profile {
+        top: 23px;
+        right: 25px;
+    }
+
+    &:hover {
+        background-image: url(/library/img/pop-up/close_btn\ copy.svg);
+    }
 }
 
 .pop-up-form {
@@ -113,12 +127,133 @@
     letter-spacing: 1px;
     text-decoration-line: none;
     line-height: normal;
-    border-bottom:1px solid $color-text;
+    border-bottom: 1px solid $color-text;
     cursor: pointer;
-    transition: all 0.5s ;
+    transition: all 0.5s;
 }
 
 .form-link:hover {
     color: $color-primary;
     border-color: $color-primary;
+}
+
+
+
+.my-profile__left {
+    width: 170px;
+    height: 100%;
+    background-color: $color-background;
+}
+
+.my-profile__left__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: $color-light;
+    margin: 139px 45px 15px;
+
+}
+
+.my-profile__userTag {
+    color: $color-primary;
+    @include font(2rem, normal, 400, 2rem);
+}
+
+.my-profile__left__userName {
+    width: 120px;
+    background-color: $color-light;
+    margin: auto;
+    text-align: center;
+    @include font(2rem, normal, 400, 2rem);
+    text-transform: uppercase;
+}
+
+.my-profile__right {
+    position: relative;
+    box-sizing: border-box;
+    padding: 39px 20px;
+    width: 430px;
+    height: 100%;
+}
+
+.my-profile__right__heading {
+    @extend %font-add;
+    @include font(4rem, 0.08rem, 400, 2rem);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.my-profile__status {
+    width: 237px;
+    height: 81px;
+    display: flex;
+    gap: 20px;
+}
+
+.status__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    @include font(2rem, 0.04rem, 400, 2rem);
+}
+
+.status__item__icon {
+    width: 20px;
+    height: 21px;
+
+    &_visits {
+        background-image: url(../img/my-profile/Star\ 1.svg);
+    }
+
+    &_bonuses {
+        background-image: url(../img/my-profile/Union.svg);
+    }
+
+    &_books {
+        background-image: url(../img/my-profile/book.svg);
+    }
+}
+
+.status__item__count {
+    @include font(1rem, 0.02rem, 400, 2rem);
+}
+
+.rented-books {
+    box-sizing: border-box;
+    padding-top: 20px;
+}
+
+.rented-books__heading {
+    margin-bottom: 30px;
+    @include font(2.5rem, normal, 400, 2rem);
+}
+
+.rented-books__item {
+    margin-left: 15px;
+    @include font(2rem, 0.2rem, 400, 2rem);
+    text-transform: capitalize;
+}
+
+.card-number {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    @include font(2rem, normal, 400, 2rem);
+}
+
+.my-profile__card-number {
+    color: $color-primary;
+}
+
+.copy__card-number {
+    width: 13.31px;
+    height: 12px;
+    background-image: url(../img/my-profile/icon-copy.svg);
 }
