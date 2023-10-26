@@ -21,3 +21,4 @@ document.body.addEventListener("click", (e) => {
     profileAuthMenu.classList.remove("profile_open");
   }
 });
+

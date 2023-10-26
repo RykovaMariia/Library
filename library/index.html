@@ -42,7 +42,9 @@
             </ul>
           </nav>
           <div class="header__icons">
-            <button class="header__icon "><div class="header__icon__userName"></div></button>
+            <button class="header__icon">
+              <div class="header__icon__userName"></div>
+            </button>
           </div>
           <button class="header__burger">
             <div class="header__burger__line"></div>
@@ -57,7 +59,7 @@
             <div class="profile__item move-to-register">Register</div>
           </div>
         </div>
-        <div class="profile profile_auth ">
+        <div class="profile profile_auth">
           <div class="profile__name profile_auth__name"></div>
           <div class="profile__items">
             <div class="profile__item move-to-profile">My profile</div>
@@ -722,7 +724,9 @@
                 >
                   Sign Up
                 </button>
-                <button class="button library-cards__button move-to-login">Log in</button>
+                <button class="button library-cards__button move-to-login">
+                  Log in
+                </button>
               </div>
             </div>
           </div>
@@ -778,11 +782,11 @@
         <form class="pop-up-form" action="" name="login">
           <label>
             <span>E-mail or readers card </span>
-            <input class="input-field" type="text" required/>
+            <input class="input-field" type="text" required />
           </label>
           <label>
             <span>Password</span>
-            <input class="input-field" class="" type="text" required/>
+            <input class="input-field" class="" type="text" required />
           </label>
           <button class="button pop-up__button" type="submit">Log In</button>
           <div class="form-checked">
@@ -811,14 +815,63 @@
           /></label>
           <label
             ><span>Password</span>
-            <input class="input-field" type="text" name="password" minlength ="8" required
+            <input
+              class="input-field"
+              type="text"
+              name="password"
+              minlength="8"
+              required
           /></label>
-          <button class="button pop-up__button register_submit" type="submit">Sign Up</button>
+          <button class="button pop-up__button register_submit" type="submit">
+            Sign Up
+          </button>
           <div class="form-checked">
             <span>Already have an account?</span>
             <div class="form-link move-to-login">Login</div>
           </div>
         </form>
+      </div>
+    </div>
+    <div class="pop-up pop-up_my-profile">
+      <div class="pop-up__window my-profile">
+        <div class="my-profile__left">
+          <div class="my-profile__left__icon">
+            <div class="my-profile__userTag"></div>
+          </div>
+          <div class="my-profile__left__userName"></div>
+        </div>
+        <div class="my-profile__right">
+          <div class="pop-up__close pop-up__close_my-profile"></div>
+          <div class="my-profile__right__heading">My profile</div>
+          <div class="my-profile__status">
+            <div class="status__item">
+              <p class="status__item__heading">Visits</p>
+              <div class="status__item__icon status__item__icon_visits"></div>
+              <div class="status__item__count count-visits">1</div>
+            </div>
+            <div class="status__item">
+              <p class="status__item__heading">Bonuses</p>
+              <div class="status__item__icon status__item__icon_bonuses"></div>
+              <div class="status__item__count count-bonuses">1</div>
+            </div>
+            <div class="status__item">
+              <p class="status__item__heading">Books</p>
+              <div class="status__item__icon status__item__icon_books"></div>
+              <div class="status__item__count count-books">1</div>
+            </div>
+          </div>
+          <div class="rented-books">
+            <p class="rented-books__heading">Rented books</p>
+            <ul class="rented-books__list">
+              <li class="rented-books__item">The Last Queen, Clive Irving</li>
+            </ul>
+          </div>
+          <div class="card-number">
+            <div class="card-number__heading">Card number</div>
+            <p class="my-profile__card-number"></p>
+            <div class="copy__card-number"></div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- <script src="index.js"></script> -->

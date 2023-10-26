@@ -29,7 +29,7 @@
     margin: 5px auto 0px auto;
     color: $color-text;
 
-    @include font(1.5rem, 700, 2rem, normal);
+    @include font(1.5rem, normal, 700, 2rem);
 
     &::after {
         content: '';
@@ -43,10 +43,10 @@
 }
 
 .profile_auth__name {
-    margin-top: 8px;
+    margin: 8px auto 0 auto;
     width: 70px;
-    align-content: center;
-    font-size: 1.3rem;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 .profile__items {
@@ -61,7 +61,7 @@
     color: $color-text;
 
     text-align: center;
-    @include font(1.5rem, 400, 2rem, normal);
+    @include font(1.5rem, normal, 400, 2rem, normal);
     cursor: pointer;
     @extend %transition;
 
