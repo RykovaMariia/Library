@@ -1,8 +1,6 @@
 //Registration
 
-const form = document.querySelector(".register-form");
-const submit = document.querySelector(".register_submit");
-const inputs = document.querySelectorAll(".input-field");
+const formRegister = document.querySelector(".register-form");
 
 class newUser {
   constructor(firstName, lastName, email, password, card) {
@@ -21,29 +19,31 @@ function generateCardNumber() {
     .toString(16)
     .toLocaleUpperCase();
 
-  // for(let el of Object.keys){
-  //   if(el === numberCard){
-  //     numberCard = generateCardNumber();
-  //   }
-  // }
+  for (let el of Object.keys(localStorage)) {
+    if (el === numberCard) {
+      numberCard = generateCardNumber();
+    }
+  }
 
   return numberCard;
 }
 
 function registering() {
-  const numberCard = generateCardNumber();
+  
+    const numberCard = generateCardNumber();
 
-  const user = new newUser(
-    form.firstName.value,
-    form.lastName.value,
-    form.email.value,
-    form.password.value,
-    numberCard
-  );
+    const user = new newUser(
+      formRegister.firstName.value,
+      formRegister.lastName.value,
+      formRegister.email.value,
+      formRegister.password.value,
+      numberCard
+    );
 
-  localStorage.setItem(numberCard, JSON.stringify(user));
+    localStorage.setItem(numberCard, JSON.stringify(user));
 
-  return numberCard;
+    return numberCard;
+
 }
 
 function changeIcon(userFirstName, userLastName) {
@@ -54,8 +54,10 @@ function changeIcon(userFirstName, userLastName) {
 
   icon.classList.add("header__icon_user");
   icon.querySelector(".header__icon__userName").innerText = twoLetter;
-  icon.setAttribute('title', 'value');
-  icon.querySelector('div').setAttribute('title', userFirstName + ' ' + userLastName);
+  icon.setAttribute("title", "value");
+  icon
+    .querySelector("div")
+    .setAttribute("title", userFirstName + " " + userLastName);
 }
 
 function changeMenu(userId) {
@@ -69,11 +71,45 @@ function addMyProfile(userId, userFirstName, userLastName) {
   document.querySelector(".my-profile__userTag").innerText =
     userFirstName.toUpperCase().slice(0, 1) +
     userLastName.toUpperCase().slice(0, 1);
-  document.querySelector(".my-profile__left__userName").innerText = userFirstName + " " + userLastName;
+  document.querySelector(".my-profile__left__userName").innerText =
+    userFirstName + " " + userLastName;
 }
 
-form.addEventListener("submit", () => {
+formRegister.addEventListener("submit", () => {
   localStorage.setItem("loginStatus", registering());
+});
+
+//Login
+
+const formLogin = document.querySelector(".login-form");
+
+function searchUser() {
+  let numberCard = "";
+
+  for (let el of Object.keys(localStorage)) {
+    if (el === formLogin.login.value) {
+      numberCard = el;
+      break;
+    }
+    if (JSON.parse(localStorage.getItem(el)).email === formLogin.login.value) {
+      numberCard = el;
+      break;
+    }
+  }
+
+  if (
+    JSON.parse(localStorage.getItem(numberCard)).password ==
+    formLogin.password.value
+  ) {
+    return numberCard;
+  } else {
+    return "";
+  }
+}
+
+formLogin.addEventListener("submit", (e) => {
+  console.log(e);
+  localStorage.setItem("loginStatus", searchUser());
 });
 
 if (localStorage.getItem("loginStatus")) {
