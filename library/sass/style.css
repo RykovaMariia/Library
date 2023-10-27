@@ -1472,6 +1472,10 @@ address {
   border: 1px solid #BB945F;
 }
 
+.input-cancel {
+  border-color: red;
+}
+
 .pop-up__button {
   margin-top: 10px;
   width: 75px;
