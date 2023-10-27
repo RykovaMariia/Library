@@ -182,7 +182,7 @@ section, main, footer, header, article {
   padding: 0;
 }
 
-.my-profile__right__heading, .library-cards__right__heading, .library-cards__input::placeholder, .library-cards__name-form, .coffee-shop__menu-price, .coffee-shop__menu-heading, .book__staff-picks, .welcome__text, h2, h1 {
+.buy__heading, .my-profile__right__heading, .library-cards__right__heading, .library-cards__input::placeholder, .library-cards__name-form, .coffee-shop__menu-price, .coffee-shop__menu-heading, .book__staff-picks, .welcome__text, h2, h1 {
   font-family: "Forum", Verdana, serif;
 }
 
@@ -1468,6 +1468,7 @@ address {
 
 .input-field {
   box-sizing: border-box;
+  width: 200px;
   height: 20px;
   border: 1px solid #BB945F;
 }
@@ -1657,6 +1658,82 @@ address {
   width: 13.31px;
   height: 12px;
   background-image: url(../img/my-profile/icon-copy.svg);
+}
+
+.buy {
+  width: 650px;
+  height: 540px;
+  padding: 0;
+}
+
+.buy__heading {
+  box-sizing: border-box;
+  width: 100%;
+  height: 60px;
+  padding: 20px;
+  background-color: #0C0C0E;
+  color: #FFFFFF;
+  font-size: 4rem;
+  letter-spacing: 0.08rem;
+  font-weight: 400;
+  line-height: 2rem;
+  font-style: normal;
+  text-align: center;
+}
+
+.buy__container {
+  box-sizing: border-box;
+  padding: 30px 40px 40px;
+  display: flex;
+  align-items: start;
+  gap: 40px;
+}
+
+.buy-form {
+  margin: 0;
+  height: 410px;
+}
+
+.buy-form__data {
+  display: flex;
+  gap: 10px;
+}
+
+.input-field_mini {
+  width: 45px;
+}
+.input-field_mini_margin {
+  margin-bottom: 10px;
+}
+
+.buy-form__bottom {
+  display: flex;
+  align-items: end;
+}
+
+.pop-up__button_buy {
+  margin-right: 25px;
+}
+
+.buy__cost {
+  display: block;
+  text-align: end;
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+  line-height: 2rem;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.buy__content {
+  width: 330px;
+  color: rgba(12, 12, 14, 0.5568627451);
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  font-weight: 400;
+  line-height: 2rem;
+  font-style: normal;
 }
 
 /*# sourceMappingURL=style.css.map */

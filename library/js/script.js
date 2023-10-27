@@ -73,35 +73,6 @@ function registering(e) {
   }
 }
 
-function changeIcon(userFirstName, userLastName) {
-  const icon = document.querySelector(".header__icon");
-  const twoLetter =
-    userFirstName.toUpperCase().slice(0, 1) +
-    userLastName.toUpperCase().slice(0, 1);
-
-  icon.classList.add("header__icon_user");
-  icon.querySelector(".header__icon__userName").innerText = twoLetter;
-  icon.setAttribute("title", "value");
-  icon
-    .querySelector("div")
-    .setAttribute("title", userFirstName + " " + userLastName);
-}
-
-function changeMenu(userId) {
-  const profileMenu = document.querySelector(".profile_auth");
-
-  profileMenu.querySelector(".profile__name").innerText = userId;
-}
-
-function addMyProfile(userId, userFirstName, userLastName) {
-  document.querySelector(".my-profile__card-number").innerText = userId;
-  document.querySelector(".my-profile__userTag").innerText =
-    userFirstName.toUpperCase().slice(0, 1) +
-    userLastName.toUpperCase().slice(0, 1);
-  document.querySelector(".my-profile__left__userName").innerText =
-    userFirstName + " " + userLastName;
-}
-
 formRegister.addEventListener("submit", registering);
 
 //Login
@@ -144,6 +115,44 @@ function searchUser(e) {
 
 formLogin.addEventListener("submit", searchUser);
 
+function changeIcon(userFirstName, userLastName) {
+  const icon = document.querySelector(".header__icon");
+  const twoLetter =
+    userFirstName.toUpperCase().slice(0, 1) +
+    userLastName.toUpperCase().slice(0, 1);
+
+  icon.classList.add("header__icon_user");
+  icon.querySelector(".header__icon__userName").innerText = twoLetter;
+  icon.setAttribute("title", "value");
+  icon
+    .querySelector("div")
+    .setAttribute("title", userFirstName + " " + userLastName);
+}
+
+function changeMenu(userId) {
+  const profileMenu = document.querySelector(".profile_auth");
+
+  profileMenu.querySelector(".profile__name").innerText = userId;
+}
+
+function addMyProfile(userId, userFirstName, userLastName) {
+  document.querySelector(".my-profile__card-number").innerText = userId;
+  document.querySelector(".my-profile__userTag").innerText =
+    userFirstName.toUpperCase().slice(0, 1) +
+    userLastName.toUpperCase().slice(0, 1);
+  document.querySelector(".my-profile__left__userName").innerText =
+    userFirstName + " " + userLastName;
+}
+
+function changeBuy() {
+  const buttons = document.querySelectorAll('.book__buy-button');
+
+  buttons.forEach((button) => {
+    button.classList.remove('move-to-login');
+    button.classList.add('move-to-buy');
+  })
+}
+
 if (localStorage.getItem("loginStatus")) {
   const userId = localStorage.getItem("loginStatus");
   const userCard = JSON.parse(localStorage.getItem(userId)).card;
@@ -153,4 +162,5 @@ if (localStorage.getItem("loginStatus")) {
   changeIcon(userFirstName, userLastName);
   changeMenu(userCard);
   addMyProfile(userCard, userFirstName, userLastName);
+  changeBuy()
 }
