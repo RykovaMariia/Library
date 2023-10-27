@@ -1,6 +1,8 @@
 //Registration
 
 const formRegister = document.querySelector(".register-form");
+const formLogin = document.querySelector(".login-form");
+const inputEmail = formRegister.querySelector(".input-email");
 
 class newUser {
   constructor(firstName, lastName, email, password, card) {
@@ -20,18 +22,37 @@ function generateCardNumber() {
     .toLocaleUpperCase();
 
   for (let el of Object.keys(localStorage)) {
-    if (el === numberCard) {
-      numberCard = generateCardNumber();
+    if (el.includes("user")) {
+      if (JSON.parse(localStorage.getItem(el)).card === numberCard) {
+        numberCard = generateCardNumber();
+      }
     }
   }
 
   return numberCard;
 }
 
-function registering() {
-  
-    const numberCard = generateCardNumber();
+function isEmailUnique() {
+  let isUnique = true;
+  for (let el of Object.keys(localStorage)) {
+    if (el.includes("user")) {
+      if (
+        JSON.parse(localStorage.getItem(el)).email &&
+        JSON.parse(localStorage.getItem(el)).email === formRegister.email.value
+      ) {
+        isUnique = false;
+        break;
+      }
+    }
+  }
+  return isUnique;
+}
 
+function registering(e) {
+  e.preventDefault();
+
+  if (isEmailUnique()) {
+    const numberCard = generateCardNumber();
     const user = new newUser(
       formRegister.firstName.value,
       formRegister.lastName.value,
@@ -40,10 +61,16 @@ function registering() {
       numberCard
     );
 
-    localStorage.setItem(numberCard, JSON.stringify(user));
+    const userName = "user" + Object.keys(localStorage).length;
 
-    return numberCard;
+    localStorage.setItem("loginStatus", userName);
+    localStorage.setItem(userName, JSON.stringify(user));
 
+    location.reload();
+  } else {
+    formRegister.email.value = "";
+    inputEmail.classList.add("input-cancel");
+  }
 }
 
 function changeIcon(userFirstName, userLastName) {
@@ -75,49 +102,55 @@ function addMyProfile(userId, userFirstName, userLastName) {
     userFirstName + " " + userLastName;
 }
 
-formRegister.addEventListener("submit", () => {
-  localStorage.setItem("loginStatus", registering());
-});
+formRegister.addEventListener("submit", registering);
 
 //Login
 
-const formLogin = document.querySelector(".login-form");
+function searchUser(e) {
+  e.preventDefault();
 
-function searchUser() {
-  let numberCard = "";
+  let userName = "";
 
   for (let el of Object.keys(localStorage)) {
-    if (el === formLogin.login.value) {
-      numberCard = el;
-      break;
-    }
-    if (JSON.parse(localStorage.getItem(el)).email === formLogin.login.value) {
-      numberCard = el;
-      break;
+    if (el.includes("user")) {
+      if (
+        JSON.parse(localStorage.getItem(el)).card === formLogin.login.value ||
+        JSON.parse(localStorage.getItem(el)).email === formLogin.login.value
+      ) {
+        userName = el;
+        console.log(userName);
+        break;
+      }
     }
   }
 
-  if (
-    JSON.parse(localStorage.getItem(numberCard)).password ==
-    formLogin.password.value
-  ) {
-    return numberCard;
+  if (userName) {
+    if (
+      JSON.parse(localStorage.getItem(userName)).password ===
+      formLogin.password.value
+    ) {
+      console.log("hi");
+      localStorage.setItem("loginStatus", userName);
+      location.reload();
+    } else {
+      formLogin.password.value = "";
+    }
   } else {
-    return "";
+    formLogin.login.value = "";
+    inputEmail.classList.add("input-cancel");
+    console.log(userName);
   }
 }
 
-formLogin.addEventListener("submit", (e) => {
-  console.log(e);
-  localStorage.setItem("loginStatus", searchUser());
-});
+formLogin.addEventListener("submit", searchUser);
 
 if (localStorage.getItem("loginStatus")) {
   const userId = localStorage.getItem("loginStatus");
+  const userCard = JSON.parse(localStorage.getItem(userId)).card;
   const userFirstName = JSON.parse(localStorage.getItem(userId)).firstName;
   const userLastName = JSON.parse(localStorage.getItem(userId)).lastName;
 
   changeIcon(userFirstName, userLastName);
-  changeMenu(userId);
-  addMyProfile(userId, userFirstName, userLastName);
+  changeMenu(userCard);
+  addMyProfile(userCard, userFirstName, userLastName);
 }
