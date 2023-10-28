@@ -5,12 +5,14 @@ const formLogin = document.querySelector(".login-form");
 const inputEmail = formRegister.querySelector(".input-email");
 
 class newUser {
-  constructor(firstName, lastName, email, password, card) {
+  constructor(firstName, lastName, email, password, card, visits, books) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.password = password;
     this.card = card;
+    this.visits = visits;
+    this.books = books;
   }
 }
 
@@ -58,7 +60,9 @@ function registering(e) {
       formRegister.lastName.value,
       formRegister.email.value,
       formRegister.password.value,
-      numberCard
+      numberCard,
+      1,
+      []
     );
 
     const userName = "user" + Object.keys(localStorage).length;
@@ -100,7 +104,10 @@ function searchUser(e) {
       JSON.parse(localStorage.getItem(userName)).password ===
       formLogin.password.value
     ) {
-      console.log("hi");
+      let user = JSON.parse(localStorage.getItem(userName));
+      user.visits += 1;
+      localStorage.setItem(userName, JSON.stringify(user));
+
       localStorage.setItem("loginStatus", userName);
       location.reload();
     } else {
@@ -135,13 +142,25 @@ function changeMenu(userId) {
   profileMenu.querySelector(".profile__name").innerText = userId;
 }
 
-function addMyProfile(userId, userFirstName, userLastName) {
-  document.querySelector(".my-profile__card-number").innerText = userId;
-  document.querySelector(".my-profile__userTag").innerText =
-    userFirstName.toUpperCase().slice(0, 1) +
-    userLastName.toUpperCase().slice(0, 1);
-  document.querySelector(".my-profile__left__userName").innerText =
-    userFirstName + " " + userLastName;
+function addMyProfile(userId, userFirstName, userLastName, countVisits, books) {
+  const number = document.querySelector(".my-profile__card-number");
+  const userTag = document.querySelector(".my-profile__userTag");
+  const userName = document.querySelector(".my-profile__left__userName");
+  const visits = document.querySelector('.count-visits');
+  const countBooks = document.querySelector('.count-books');
+
+  number.innerText = userId;
+  userTag.innerText = userFirstName.toUpperCase().slice(0, 1) + userLastName.toUpperCase().slice(0, 1);
+  userName.innerText = userFirstName + " " + userLastName;
+  visits.innerText = countVisits;
+  countBooks.innerText = books.length;
+
+  books.forEach((book) => {
+    const newLi = document.createElement('li');
+    newLi.append(book);
+
+    document.querySelector('.rented-books__list').append(newLi);
+  })
 }
 
 function changeBuy() {
@@ -158,9 +177,12 @@ if (localStorage.getItem("loginStatus")) {
   const userCard = JSON.parse(localStorage.getItem(userId)).card;
   const userFirstName = JSON.parse(localStorage.getItem(userId)).firstName;
   const userLastName = JSON.parse(localStorage.getItem(userId)).lastName;
+  const countVisits = JSON.parse(localStorage.getItem(userId)).visits;
+  const books = JSON.parse(localStorage.getItem(userId)).books;
 
+  changeBuy();
   changeIcon(userFirstName, userLastName);
   changeMenu(userCard);
-  addMyProfile(userCard, userFirstName, userLastName);
-  changeBuy()
+  addMyProfile(userCard, userFirstName, userLastName, countVisits, books);
+  
 }

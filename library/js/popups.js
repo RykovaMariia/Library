@@ -11,7 +11,11 @@ const popUpBuy = document.querySelector('.pop-up_buy');
 
 const popUpClose = document.querySelectorAll('.pop-up__close');
 
+const formBuy = document.querySelector('.buy-form');
+
+
 function openPopUpLogIn() {
+
   popUpLogin.classList.add("pop-up_opened");
   document.body.classList.add('lock')
   profileMenu.classList.remove("profile_open");
@@ -36,10 +40,11 @@ function clickLogOut() {
   location.reload();
 }
 
-function clickBy() {
-  console.log('object');
+function clickBy(e) {
+  
   popUpBuy.classList.add("pop-up_opened");
-  document.body.classList.add('lock')
+  document.body.classList.add('lock');
+  return e.target.parentElement.querySelector('.book__name').innerText.split('\n').join(', ');
 }
 
 function closePopUp() {
@@ -54,7 +59,22 @@ logIn.forEach(el => el.addEventListener("click", openPopUpLogIn));
 register.forEach(el => el.addEventListener("click", openPopUpRegister));
 myProfile.forEach(el => el.addEventListener("click", openPopUpMyProfile));
 logOut.forEach(el => el.addEventListener("click", clickLogOut));
-buyButton.forEach(el => el.addEventListener("click", clickBy));
+
+buyButton.forEach(el => el.addEventListener("click", (e) => {
+  let book = clickBy(e).toLowerCase();
+  console.log(book);
+  formBuy.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+  
+    const userId = localStorage.getItem("loginStatus");
+    let user = JSON.parse(localStorage.getItem(userId));
+    user.books.push(book);
+    localStorage.setItem(userId, JSON.stringify(user));
+  
+    location.reload();
+  })
+}));
+
 popUpClose.forEach(el => el.addEventListener('click', closePopUp));
 
 document.addEventListener( 'click', (e) => {
@@ -62,6 +82,8 @@ document.addEventListener( 'click', (e) => {
 		closePopUp();
 	}
 })
+
+
 
 
 

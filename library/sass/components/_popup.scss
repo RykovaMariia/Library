@@ -228,6 +228,7 @@
 }
 
 .rented-books {
+    
     box-sizing: border-box;
     padding-top: 20px;
 }
@@ -237,7 +238,14 @@
     @include font(2.5rem, normal, 400, 2rem);
 }
 
-.rented-books__item {
+.rented-books__container{
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 60px;
+}
+
+.rented-books__list li {
+    width: 800px;
     margin-left: 15px;
     @include font(2rem, 0.2rem, 400, 2rem);
     text-transform: capitalize;

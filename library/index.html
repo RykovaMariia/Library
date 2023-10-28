@@ -887,12 +887,12 @@
             <div class="status__item">
               <p class="status__item__heading">Visits</p>
               <div class="status__item__icon status__item__icon_visits"></div>
-              <div class="status__item__count count-visits">1</div>
+              <div class="status__item__count count-visits"></div>
             </div>
             <div class="status__item">
               <p class="status__item__heading">Bonuses</p>
               <div class="status__item__icon status__item__icon_bonuses"></div>
-              <div class="status__item__count count-bonuses">1</div>
+              <div class="status__item__count count-bonuses">100</div>
             </div>
             <div class="status__item">
               <p class="status__item__heading">Books</p>
@@ -902,9 +902,9 @@
           </div>
           <div class="rented-books">
             <p class="rented-books__heading">Rented books</p>
+            <div class="rented-books__container">
             <ul class="rented-books__list">
-              <li class="rented-books__item">The Last Queen, Clive Irving</li>
-            </ul>
+            </ul></div>
           </div>
           <div class="card-number">
             <div class="card-number__heading">Card number</div>
@@ -922,7 +922,11 @@
           <form class="pop-up-form buy-form" name="buy">
             <label>
               <span>Bank card number</span>
-              <input class="input-field" type="number" name="bankCard" required
+              <input
+                class="input-field"
+                type="text"
+                name="bankCard"
+               
             /></label>
             <label
               ><span>Expiration code</span>
@@ -930,14 +934,13 @@
                 <input
                   class="input-field input-field_mini"
                   type="number"
-                  name="monthData"
-                  required
+                 
                 />
                 <input
                   class="input-field input-field_mini"
-                  type="number"
+                  type="text"
                   name="yearData"
-                  required
+                
                 />
               </div>
             </label>
@@ -945,9 +948,9 @@
               ><span>CVC</span>
               <input
                 class="input-field input-field_mini input-field_mini_margin"
-                type="number"
+                type="text"
                 name="CVC"
-                required
+               
               />
             </label>
             <label
@@ -956,15 +959,15 @@
                 class="input-field"
                 type="text"
                 name="cardholderName"
-                required
+              
             /></label>
             <label
               ><span>Postal code</span>
-              <input class="input-field" type="text" name="postalCode" required
+              <input class="input-field" type="text" name="postalCode" 
             /></label>
             <label
               ><span>City / Town</span>
-              <input class="input-field" type="text" name="city" required
+              <input class="input-field" type="text" name="city" 
             /></label>
             <div class="buy-form__bottom">
               <button
@@ -993,7 +996,7 @@
     <script src="./js/slider.js"></script>
     <script src="./js/seasons.js"></script>
     <script src="./js/profileMenu.js"></script>
-    <script src="./js/popups.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/popups.js"></script>
   </body>
 </html>
