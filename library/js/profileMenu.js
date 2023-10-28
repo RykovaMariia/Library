@@ -2,6 +2,7 @@ const profileIcon = document.querySelector(".header__icon");
 const profileMenu = document.querySelector(".profile_no-auth");
 const profileAuthMenu = document.querySelector(".profile_auth");
 
+
 profileIcon.addEventListener("click", (e) => {
     if(localStorage.getItem('loginStatus')){
         profileAuthMenu.classList.toggle("profile_open");

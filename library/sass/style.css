@@ -1627,7 +1627,14 @@ address {
   font-style: normal;
 }
 
-.rented-books__item {
+.rented-books__container {
+  overflow-x: auto;
+  overflow-y: auto;
+  height: 60px;
+}
+
+.rented-books__list li {
+  width: 800px;
   margin-left: 15px;
   font-size: 2rem;
   letter-spacing: 0.2rem;
