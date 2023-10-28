@@ -5,7 +5,7 @@ const formLogin = document.querySelector(".login-form");
 const inputEmail = formRegister.querySelector(".input-email");
 
 class newUser {
-  constructor(firstName, lastName, email, password, card, visits, books) {
+  constructor(firstName, lastName, email, password, card, visits, books, ownBooks) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
@@ -13,6 +13,7 @@ class newUser {
     this.card = card;
     this.visits = visits;
     this.books = books;
+    this.ownBooks = ownBooks;
   }
 }
 
@@ -62,6 +63,7 @@ function registering(e) {
       formRegister.password.value,
       numberCard,
       1,
+      [],
       []
     );
 
@@ -149,6 +151,8 @@ function addMyProfile(userId, userFirstName, userLastName, countVisits, books) {
   const visits = document.querySelector('.count-visits');
   const countBooks = document.querySelector('.count-books');
 
+  const bookName = document.querySelectorAll(".book__name")
+
   number.innerText = userId;
   userTag.innerText = userFirstName.toUpperCase().slice(0, 1) + userLastName.toUpperCase().slice(0, 1);
   userName.innerText = userFirstName + " " + userLastName;
@@ -157,10 +161,21 @@ function addMyProfile(userId, userFirstName, userLastName, countVisits, books) {
 
   books.forEach((book) => {
     const newLi = document.createElement('li');
+    console.log(book);
     newLi.append(book);
-
     document.querySelector('.rented-books__list').append(newLi);
   })
+}
+
+function changeOwn(ownBooks) {
+  const buyButton = document.querySelectorAll(".move-to-buy");
+
+  ownBooks.forEach((el) => {
+    buyButton[el].innerText = "Own";
+    buyButton[el].classList.add('book__buy-button_own');
+    buyButton[el].disabled = 'true';
+  })
+
 }
 
 function changeBuy() {
@@ -179,10 +194,11 @@ if (localStorage.getItem("loginStatus")) {
   const userLastName = JSON.parse(localStorage.getItem(userId)).lastName;
   const countVisits = JSON.parse(localStorage.getItem(userId)).visits;
   const books = JSON.parse(localStorage.getItem(userId)).books;
+  const ownBooks = JSON.parse(localStorage.getItem(userId)).ownBooks;
 
   changeBuy();
   changeIcon(userFirstName, userLastName);
   changeMenu(userCard);
   addMyProfile(userCard, userFirstName, userLastName, countVisits, books);
-  
+  changeOwn(ownBooks)
 }
