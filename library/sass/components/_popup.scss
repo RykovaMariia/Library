@@ -285,7 +285,13 @@
 .copy__card-number {
     width: 13.31px;
     height: 12px;
+    cursor: pointer;
     background-image: url(../img/my-profile/icon-copy.svg);
+    transition: all 0.5s;
+
+    &:hover{
+        background-image: url(../img/my-profile/icon-copy-copy.svg);
+    }
 }
 
 // buy

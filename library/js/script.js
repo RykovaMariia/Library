@@ -5,6 +5,9 @@ const formLogin = document.querySelector(".login-form");
 const formLibraryCards = document.querySelector(".library-cards__form");
 const inputEmail = formRegister.querySelector(".input-email");
 
+const formCard = document.querySelector(".library-cards__form");
+
+
 class newUser {
   constructor(
     firstName,
@@ -14,7 +17,8 @@ class newUser {
     card,
     visits,
     books,
-    ownBooks
+    ownBooks,
+    libraryCard
   ) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -24,6 +28,7 @@ class newUser {
     this.visits = visits;
     this.books = books;
     this.ownBooks = ownBooks;
+    this.libraryCard = libraryCard;
   }
 }
 
@@ -73,6 +78,7 @@ function registering(e) {
       formRegister.password.value,
       numberCard,
       1,
+      [],
       [],
       []
     );
@@ -134,26 +140,48 @@ function searchUser(e) {
 
 formLogin.addEventListener("submit", searchUser);
 
-//card
-// function searchCard(e) {
-//   e.preventDefault();
+function searchCard(e) {
+  e.preventDefault();
 
-//   let userName = "";
+function remove() {
+  buttonSbm.classList.remove("library-cards__submit-button_none");
+      status.classList.remove("my-profile__status__card_visible");
+}
 
-//   for (let el of Object.keys(localStorage)) {
-//     if (el.includes("user")) {
-//       if (
-//         JSON.parse(localStorage.getItem(el)).firstName ===
-//           formLibraryCards.name.value &&
-//         JSON.parse(localStorage.getItem(el)).card ===
-//           formLibraryCards.cardNumber.value
-//       ) {
-//   } else {
-//     formLogin.login.value = "";
-//     inputEmail.classList.add("input-cancel");
-//     console.log(userName);
-//   }
-// }
+  let userName = "";
+  const buttonSbm = document.querySelector(".library-cards__submit-button");
+  const status = document.querySelector(".my-profile__status__card");
+
+  for (let el of Object.keys(localStorage)) {
+    if (el.includes("user")) {
+      if (
+        JSON.parse(localStorage.getItem(el)).firstName + " " +
+          JSON.parse(localStorage.getItem(el)).lastName ===
+        formLibraryCards.name.value
+      ) {
+        userName = el;
+        break;
+      }
+    }
+  }
+
+  if (userName) {
+    if (
+      JSON.parse(localStorage.getItem(userName)).card ===
+      formLibraryCards.cardNumber.value
+    ) {
+      buttonSbm.classList.add("library-cards__submit-button_none");
+      status.classList.add("my-profile__status__card_visible");
+      setTimeout(remove, 10000)
+    } else {
+      formLogin.password.value = "";
+    }
+  } else {
+    formLogin.login.value = "";
+    inputEmail.classList.add("input-cancel");
+    console.log(userName);
+  }
+}
 
 //change before login
 
@@ -200,16 +228,6 @@ function addMyProfile(userId, userFirstName, userLastName, countVisits, books) {
   });
 }
 
-function changeOwn(ownBooks) {
-  const buyButton = document.querySelectorAll(".move-to-buy");
-
-  ownBooks.forEach((el) => {
-    buyButton[el].innerText = "Own";
-    buyButton[el].classList.add("book__buy-button_own");
-    buyButton[el].disabled = "true";
-  });
-}
-
 function changeBuy() {
   const buttons = document.querySelectorAll(".book__buy-button");
 
@@ -219,17 +237,58 @@ function changeBuy() {
   });
 }
 
+function changeBuyWithCard() {
+  const buttons = document.querySelectorAll(".book__buy-button");
+
+  buttons.forEach((button) => {
+    button.classList.remove("move-to-buy");
+    button.classList.remove("move-to-login");
+  });
+}
+
+function changeOwn(ownBooks) {
+  const buyButton = document.querySelectorAll(".book__buy-button");
+
+  ownBooks.forEach((el) => {
+    buyButton[el].innerText = "Own";
+    buyButton[el].classList.add("book__buy-button_own");
+    buyButton[el].disabled = "true";
+  });
+}
+
+function changeOwnWithCard(userId) {
+  const buyButton = document.querySelectorAll(".book__buy-button");
+
+  buyButton.forEach((el, index) =>
+    el.addEventListener("click", (e) => {
+      let book = e.target;
+
+      let bookName = book.parentElement
+        .querySelector(".book__name")
+        .innerText.split("\n")
+        .join(", ")
+        .toLowerCase();
+
+      let user = JSON.parse(localStorage.getItem(userId));
+      user.books.push(bookName);
+      user.ownBooks.push(index);
+      localStorage.setItem(userId, JSON.stringify(user));
+
+      location.reload();
+    })
+  );
+}
+
 function changeDigitalLibraryCard(userFirstName, userLastName, userCard) {
   const libraryLeftHeading = document.querySelector(
     ".library-cards__left__heading"
   );
-  const formCard = document.querySelector(".library-cards__form");
   const buttonSbm = document.querySelector(".library-cards__submit-button");
   const status = document.querySelector(".my-profile__status__card");
 
   const right = document.querySelector(".library-cards__right");
-  const buttonNone = right.querySelector('div').firstElementChild;
-  const buttonChange = right.querySelector('div').lastElementChild;
+  const buttonNone = right.querySelector("div").firstElementChild;
+  const buttonChange = right.querySelector("div").lastElementChild;
 
   libraryLeftHeading.innerText = "Your Library card";
   formCard.name.value = userFirstName + " " + userLastName;
@@ -242,10 +301,10 @@ function changeDigitalLibraryCard(userFirstName, userLastName, userCard) {
   right.querySelector("h3").innerText = "Visit your profile";
   right.querySelector("p").innerText =
     "With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.";
-  buttonNone.classList.add('library-cards__button_none');
-  buttonChange.innerText = 'Profile';
-  buttonChange.classList.remove('move-to-login');
-  buttonChange.classList.add('move-to-profile');
+  buttonNone.classList.add("library-cards__button_none");
+  buttonChange.innerText = "Profile";
+  buttonChange.classList.remove("move-to-login");
+  buttonChange.classList.add("move-to-profile");
 }
 
 if (localStorage.getItem("loginStatus")) {
@@ -256,11 +315,19 @@ if (localStorage.getItem("loginStatus")) {
   const countVisits = JSON.parse(localStorage.getItem(userId)).visits;
   const books = JSON.parse(localStorage.getItem(userId)).books;
   const ownBooks = JSON.parse(localStorage.getItem(userId)).ownBooks;
+  const libraryCard = JSON.parse(localStorage.getItem(userId)).libraryCard;
 
-  changeBuy();
   changeIcon(userFirstName, userLastName);
   changeMenu(userCard);
   addMyProfile(userCard, userFirstName, userLastName, countVisits, books);
+  if (libraryCard < 1) {
+    changeBuy();
+  } else {
+    changeBuyWithCard();
+    changeOwnWithCard(userId);
+  }
   changeOwn(ownBooks);
   changeDigitalLibraryCard(userFirstName, userLastName, userCard);
+} else {
+  formCard.addEventListener('submit', searchCard);
 }
