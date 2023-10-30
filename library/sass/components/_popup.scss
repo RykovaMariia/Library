@@ -197,6 +197,23 @@
     gap: 20px;
 }
 
+.my-profile__status__card {
+    display: none;
+    width: 169px;
+    height: 63px;
+    margin: 15px auto;
+    gap: 35px;
+
+    &_visible {
+        display: flex;
+    }
+
+    .status__item {
+        gap: 0; 
+        @include font(1rem, 0.02rem, 400, 2rem);
+    }
+}
+
 .status__item {
     display: flex;
     flex-direction: column;
@@ -211,11 +228,11 @@
     height: 21px;
 
     &_visits {
-        background-image: url(../img/my-profile/Star\ 1.svg);
+        background-image: url(../img/my-profile/Union.svg);
     }
 
     &_bonuses {
-        background-image: url(../img/my-profile/Union.svg);
+        background-image: url(../img/my-profile/Star\ 1.svg);
     }
 
     &_books {
@@ -274,7 +291,7 @@
 // buy
 
 .buy {
-    width: 650px;
+    width: 640px;
     height: 540px;
     padding: 0;
 }
@@ -293,7 +310,7 @@
 
 .buy__container {
     box-sizing: border-box;
-    padding: 30px 40px 40px;
+    padding: 30px 35px 40px;
     display: flex;
     align-items: start;
     gap: 40px;
