@@ -182,7 +182,7 @@ section, main, footer, header, article {
   padding: 0;
 }
 
-.buy__heading, .my-profile__right__heading, .library-cards__right__heading, .library-cards__input::placeholder, .library-cards__name-form, .coffee-shop__menu-price, .coffee-shop__menu-heading, .book__staff-picks, .welcome__text, h2, h1 {
+.buy__heading, .my-profile__right__heading, .library-cards__right__heading, .library-cards__input, .library-cards__name-form, .coffee-shop__menu-price, .coffee-shop__menu-heading, .book__staff-picks, .welcome__text, h2, h1 {
   font-family: "Forum", Verdana, serif;
 }
 
@@ -287,10 +287,16 @@ h3 {
   line-height: normal;
   font-style: normal;
 }
+.library-cards__submit-button_none {
+  display: none;
+}
 
 .library-cards__button {
   width: 75px;
   height: 30px;
+}
+.library-cards__button_none {
+  display: none;
 }
 
 .container {
@@ -1304,14 +1310,15 @@ address {
   border: none;
   outline: none;
   padding: 8px 20px;
-}
-.library-cards__input::placeholder {
-  color: #8E8E8E;
+  color: #BB945F;
   font-size: 3rem;
   letter-spacing: 0.06rem;
   font-weight: 400;
   line-height: 5rem;
   font-style: normal;
+}
+.library-cards__input::placeholder {
+  color: #8E8E8E;
 }
 
 @media screen and (max-width: 640px) {
@@ -1321,13 +1328,14 @@ address {
   }
 }
 .library-cards__right {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
   width: 33%;
   height: 253px;
 }
 
 .library-cards__right__heading {
-  margin-bottom: 30px;
   text-align: right;
   font-size: 3rem;
   letter-spacing: 0.06rem;
@@ -1354,7 +1362,6 @@ address {
   }
 }
 .library-cards__right__text {
-  margin-bottom: 35px;
   text-align: right;
   line-height: 40px;
   letter-spacing: 0.4px;
@@ -1579,6 +1586,25 @@ address {
   gap: 20px;
 }
 
+.my-profile__status__card {
+  display: none;
+  width: 169px;
+  height: 63px;
+  margin: 15px auto;
+  gap: 35px;
+}
+.my-profile__status__card_visible {
+  display: flex;
+}
+.my-profile__status__card .status__item {
+  gap: 0;
+  font-size: 1rem;
+  letter-spacing: 0.02rem;
+  font-weight: 400;
+  line-height: 2rem;
+  font-style: normal;
+}
+
 .status__item {
   display: flex;
   flex-direction: column;
@@ -1596,10 +1622,10 @@ address {
   height: 21px;
 }
 .status__item__icon_visits {
-  background-image: url(../img/my-profile/Star\ 1.svg);
+  background-image: url(../img/my-profile/Union.svg);
 }
 .status__item__icon_bonuses {
-  background-image: url(../img/my-profile/Union.svg);
+  background-image: url(../img/my-profile/Star\ 1.svg);
 }
 .status__item__icon_books {
   background-image: url(../img/my-profile/book.svg);
@@ -1668,7 +1694,7 @@ address {
 }
 
 .buy {
-  width: 650px;
+  width: 640px;
   height: 540px;
   padding: 0;
 }
@@ -1690,7 +1716,7 @@ address {
 
 .buy__container {
   box-sizing: border-box;
-  padding: 30px 40px 40px;
+  padding: 30px 35px 40px;
   display: flex;
   align-items: start;
   gap: 40px;

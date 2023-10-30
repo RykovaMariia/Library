@@ -93,10 +93,12 @@
     outline: none;
     padding: 8px 20px;
 
+    color: $color-primary;
+    @extend %font-add;
+    @include font(3rem, 0.06rem, 400, 5rem);
+
     &::placeholder {
         color: $color-placeholder;
-        @extend %font-add;
-        @include font(3rem, 0.06rem, 400, 5rem, normal);
     }
 }
 
@@ -108,14 +110,14 @@
 }
 
 .library-cards__right {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
     width: 33%;
     height: 253px;
 }
 
 .library-cards__right__heading {
-    margin-bottom: 30px;
-
     text-align: right;
     @extend %font-add;
     @include font(3rem, 0.06rem, 400, 3.3rem, normal);
@@ -142,7 +144,6 @@
 }
 
 .library-cards__right__text {
-    margin-bottom: 35px;
 
     text-align: right;
     line-height: 40px;
