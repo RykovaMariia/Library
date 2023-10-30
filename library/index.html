@@ -939,7 +939,8 @@
                 class="input-field"
                 type="text"
                 name="bankCard"
-               
+                pattern="^\d{16,19}$"
+                required
             /></label>
             <label
               ><span>Expiration code</span>
@@ -947,13 +948,15 @@
                 <input
                   class="input-field input-field_mini"
                   type="number"
-                 
+                  min="1"  max="12" 
+                  required
                 />
                 <input
                   class="input-field input-field_mini"
                   type="text"
                   name="yearData"
-                
+                  pattern="^\d{2,2}$"
+                  required
                 />
               </div>
             </label>
@@ -963,7 +966,8 @@
                 class="input-field input-field_mini input-field_mini_margin"
                 type="text"
                 name="CVC"
-               
+                pattern="^\d{3,3}$"
+                required
               />
             </label>
             <label
@@ -972,15 +976,15 @@
                 class="input-field"
                 type="text"
                 name="cardholderName"
-              
+                required
             /></label>
             <label
               ><span>Postal code</span>
-              <input class="input-field" type="text" name="postalCode" 
+              <input class="input-field" type="text" name="postalCode" required
             /></label>
             <label
               ><span>City / Town</span>
-              <input class="input-field" type="text" name="city" 
+              <input class="input-field" type="text" name="city" required
             /></label>
             <div class="buy-form__bottom">
               <button

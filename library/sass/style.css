@@ -888,7 +888,7 @@ address {
   position: relative;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1388px) {
   .books-conteiner {
     height: 2340px;
   }
@@ -1690,7 +1690,12 @@ address {
 .copy__card-number {
   width: 13.31px;
   height: 12px;
+  cursor: pointer;
   background-image: url(../img/my-profile/icon-copy.svg);
+  transition: all 0.5s;
+}
+.copy__card-number:hover {
+  background-image: url(../img/my-profile/icon-copy-copy.svg);
 }
 
 .buy {
