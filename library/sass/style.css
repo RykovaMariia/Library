@@ -1450,7 +1450,7 @@ address {
 .pop-up__close {
   width: 18px;
   height: 18px;
-  background-image: url(/library/img/pop-up/close_btn.svg);
+  background-image: url(../img/pop-up/close_btn.svg);
   position: absolute;
   top: 13px;
   right: 15px;
@@ -1461,8 +1461,13 @@ address {
   top: 23px;
   right: 25px;
 }
+.pop-up__close_buy {
+  background-image: url(../img/pop-up-buy/close_btn.svg);
+  top: 23px;
+  right: 25px;
+}
 .pop-up__close:hover {
-  background-image: url(/library/img/pop-up/close_btn\ copy.svg);
+  background-image: url(../img/pop-up/close_btn_hover.svg);
 }
 
 .pop-up-form {
@@ -1695,7 +1700,7 @@ address {
   transition: all 0.5s;
 }
 .copy__card-number:hover {
-  background-image: url(../img/my-profile/icon-copy-copy.svg);
+  background-image: url(../img/my-profile/icon-copy-hover.svg);
 }
 
 .buy {

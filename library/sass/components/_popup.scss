@@ -65,7 +65,7 @@
 .pop-up__close {
     width: 18px;
     height: 18px;
-    background-image: url(/library/img/pop-up/close_btn.svg);
+    background-image: url(../img/pop-up/close_btn.svg);
     position: absolute;
     top: 13px;
     right: 15px;
@@ -77,8 +77,14 @@
         right: 25px;
     }
 
+    &_buy{
+        background-image: url(../img/pop-up-buy/close_btn.svg);
+        top: 23px;
+        right: 25px;
+    }
+
     &:hover {
-        background-image: url(/library/img/pop-up/close_btn\ copy.svg);
+        background-image: url(../img/pop-up/close_btn_hover.svg);
     }
 }
 
@@ -290,7 +296,7 @@
     transition: all 0.5s;
 
     &:hover{
-        background-image: url(../img/my-profile/icon-copy-copy.svg);
+        background-image: url(../img/my-profile/icon-copy-hover.svg);
     }
 }
 

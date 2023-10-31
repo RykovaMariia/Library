@@ -739,12 +739,12 @@
                   <div class="status__item">
                     <p class="status__item__heading">Bonuses</p>
                     <div class="status__item__icon status__item__icon_bonuses"></div>
-                    <div class="status__item__count count-bonuses">100</div>
+                    <div class="status__item__count count-bonuses">1240</div>
                   </div>
                   <div class="status__item">
                     <p class="status__item__heading">Books</p>
                     <div class="status__item__icon status__item__icon_books"></div>
-                    <div class="status__item__count count-books">1</div>
+                    <div class="status__item__count count-books"></div>
                   </div>
                 </div>
               </form>
@@ -930,7 +930,7 @@
     <div class="pop-up pop-up_buy">
       <div class="pop-up__window buy">
         <span class="pop-up__heading buy__heading">Buy a library card</span>
-        <div class="pop-up__close pop-up__close_my-profile"></div>
+        <div class="pop-up__close pop-up__close_buy"></div>
         <div class="buy__container">
           <form class="pop-up-form buy-form" name="buy">
             <label>
@@ -939,7 +939,7 @@
                 class="input-field"
                 type="text"
                 name="bankCard"
-                pattern="^\d{16,19}$"
+                pattern="^([0-9 ]){16,19}$"
                 required
             /></label>
             <label
@@ -947,8 +947,8 @@
               <div class="buy-form__data">
                 <input
                   class="input-field input-field_mini"
-                  type="number"
-                  min="1"  max="12" 
+                  type="text"
+                  pattern="^(0?[1-9]|1[0-2])$"
                   required
                 />
                 <input
@@ -1013,7 +1013,12 @@
     <script src="./js/slider.js"></script>
     <script src="./js/seasons.js"></script>
     <script src="./js/profileMenu.js"></script>
+    <script src="./js/copyCard.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/changeAfterLogin.js"></script>
     <script src="./js/popups.js"></script>
+    <script src="./js/buyButton.js"></script>
+    <script src="./js/loguot.js"></script>
+   
   </body>
 </html>
