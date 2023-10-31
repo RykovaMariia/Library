@@ -3,10 +3,9 @@
 const formRegister = document.querySelector(".register-form");
 const formLogin = document.querySelector(".login-form");
 const formLibraryCards = document.querySelector(".library-cards__form");
-const inputEmail = formRegister.querySelector(".input-email");
-
 const formCard = document.querySelector(".library-cards__form");
 
+const inputEmail = formRegister.querySelector(".input-email");
 
 class newUser {
   constructor(
@@ -55,8 +54,8 @@ function isEmailUnique() {
   for (let el of Object.keys(localStorage)) {
     if (el.includes("user")) {
       if (
-        JSON.parse(localStorage.getItem(el)).email &&
-        JSON.parse(localStorage.getItem(el)).email === formRegister.email.value
+        JSON.parse(localStorage.getItem(el)).email ===
+        formRegister.email.value.toLowerCase()
       ) {
         isUnique = false;
         break;
@@ -72,9 +71,9 @@ function registering(e) {
   if (isEmailUnique()) {
     const numberCard = generateCardNumber();
     const user = new newUser(
-      formRegister.firstName.value,
-      formRegister.lastName.value,
-      formRegister.email.value,
+      formRegister.firstName.value.toLowerCase(),
+      formRegister.lastName.value.toLowerCase(),
+      formRegister.email.value.toLowerCase(),
       formRegister.password.value,
       numberCard,
       1,
@@ -107,8 +106,10 @@ function searchUser(e) {
   for (let el of Object.keys(localStorage)) {
     if (el.includes("user")) {
       if (
-        JSON.parse(localStorage.getItem(el)).card === formLogin.login.value ||
-        JSON.parse(localStorage.getItem(el)).email === formLogin.login.value
+        JSON.parse(localStorage.getItem(el)).card.toLowerCase() ===
+          formLogin.login.value.toLowerCase() ||
+        JSON.parse(localStorage.getItem(el)).email ===
+          formLogin.login.value.toLowerCase()
       ) {
         userName = el;
         console.log(userName);
@@ -143,10 +144,12 @@ formLogin.addEventListener("submit", searchUser);
 function searchCard(e) {
   e.preventDefault();
 
-function remove() {
-  buttonSbm.classList.remove("library-cards__submit-button_none");
-      status.classList.remove("my-profile__status__card_visible");
-}
+  function remove() {
+    buttonSbm.classList.remove("library-cards__submit-button_none");
+    status.classList.remove("my-profile__status__card_visible");
+    formLibraryCards.name.value = "";
+    formLibraryCards.cardNumber.value = "";
+  }
 
   let userName = "";
   const buttonSbm = document.querySelector(".library-cards__submit-button");
@@ -155,9 +158,10 @@ function remove() {
   for (let el of Object.keys(localStorage)) {
     if (el.includes("user")) {
       if (
-        JSON.parse(localStorage.getItem(el)).firstName + " " +
+        JSON.parse(localStorage.getItem(el)).firstName +
+          " " +
           JSON.parse(localStorage.getItem(el)).lastName ===
-        formLibraryCards.name.value
+        formLibraryCards.name.value.toLowerCase()
       ) {
         userName = el;
         break;
@@ -167,12 +171,12 @@ function remove() {
 
   if (userName) {
     if (
-      JSON.parse(localStorage.getItem(userName)).card ===
-      formLibraryCards.cardNumber.value
+      JSON.parse(localStorage.getItem(userName)).card.toLowerCase() ===
+      formLibraryCards.cardNumber.value.toLowerCase()
     ) {
       buttonSbm.classList.add("library-cards__submit-button_none");
       status.classList.add("my-profile__status__card_visible");
-      setTimeout(remove, 10000)
+      setTimeout(remove, 10000);
     } else {
       formLogin.password.value = "";
     }
@@ -185,7 +189,7 @@ function remove() {
 
 //change before login
 
-function changeIcon(userFirstName, userLastName) {
+function changeIcon(userFirstName, userLastName, userFullName) {
   const icon = document.querySelector(".header__icon");
   const twoLetter =
     userFirstName.toUpperCase().slice(0, 1) +
@@ -196,7 +200,7 @@ function changeIcon(userFirstName, userLastName) {
   icon.setAttribute("title", "value");
   icon
     .querySelector("div")
-    .setAttribute("title", userFirstName + " " + userLastName);
+    .setAttribute("title", userFullName);
 }
 
 function changeMenu(userId) {
@@ -279,7 +283,7 @@ function changeOwnWithCard(userId) {
   );
 }
 
-function changeDigitalLibraryCard(userFirstName, userLastName, userCard) {
+function changeDigitalLibraryCard(userFullName, userCard) {
   const libraryLeftHeading = document.querySelector(
     ".library-cards__left__heading"
   );
@@ -291,7 +295,7 @@ function changeDigitalLibraryCard(userFirstName, userLastName, userCard) {
   const buttonChange = right.querySelector("div").lastElementChild;
 
   libraryLeftHeading.innerText = "Your Library card";
-  formCard.name.value = userFirstName + " " + userLastName;
+  formCard.name.value = userFullName;
   formCard.name.disabled = true;
   formCard.cardNumber.value = userCard;
   formCard.cardNumber.disabled = true;
@@ -312,12 +316,18 @@ if (localStorage.getItem("loginStatus")) {
   const userCard = JSON.parse(localStorage.getItem(userId)).card;
   const userFirstName = JSON.parse(localStorage.getItem(userId)).firstName;
   const userLastName = JSON.parse(localStorage.getItem(userId)).lastName;
+  const userFullName =
+    userFirstName[0].toUpperCase() +
+    userFirstName.slice(1) +
+    " " +
+    userLastName[0].toUpperCase() +
+    userLastName.slice(1);
   const countVisits = JSON.parse(localStorage.getItem(userId)).visits;
   const books = JSON.parse(localStorage.getItem(userId)).books;
   const ownBooks = JSON.parse(localStorage.getItem(userId)).ownBooks;
   const libraryCard = JSON.parse(localStorage.getItem(userId)).libraryCard;
 
-  changeIcon(userFirstName, userLastName);
+  changeIcon(userFirstName, userLastName, userFullName);
   changeMenu(userCard);
   addMyProfile(userCard, userFirstName, userLastName, countVisits, books);
   if (libraryCard < 1) {
@@ -327,7 +337,7 @@ if (localStorage.getItem("loginStatus")) {
     changeOwnWithCard(userId);
   }
   changeOwn(ownBooks);
-  changeDigitalLibraryCard(userFirstName, userLastName, userCard);
+  changeDigitalLibraryCard(userFullName, userCard);
 } else {
-  formCard.addEventListener('submit', searchCard);
+  formCard.addEventListener("submit", searchCard);
 }

@@ -1700,7 +1700,7 @@ address {
   transition: all 0.5s;
 }
 .copy__card-number:hover {
-  background-image: url(../img/my-profile/icon-copy-copy.svg);
+  background-image: url(../img/my-profile/icon-copy-hover.svg);
 }
 
 .buy {
